@@ -1,0 +1,289 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const channels = [
+  {
+    label: 'Email',
+    value: 'fredchoi1205@gmail.com',
+    href: 'mailto:fredchoi1205@gmail.com',
+    iconPath: 'M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2zM22 6l-10 7L2 6',
+  },
+  {
+    label: 'GitHub',
+    value: 'github.com/fredkchoi',
+    href: 'https://github.com/fredkchoi',
+    external: true,
+    iconPath: 'M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.1.79-.25.79-.56v-2.17c-3.2.7-3.87-1.36-3.87-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.95.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 2.9-.39c.98 0 1.97.13 2.9.39 2.2-1.49 3.18-1.18 3.18-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56C20.21 21.39 23.5 17.08 23.5 12 23.5 5.65 18.35.5 12 .5z',
+    filled: true,
+  },
+  {
+    label: 'LinkedIn',
+    value: 'linkedin.com/in/fred-choi-506ab3166',
+    href: 'https://www.linkedin.com/in/fred-choi-506ab3166/',
+    external: true,
+    iconPath: 'M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z',
+    filled: true,
+  },
+];
+---
+
+<BaseLayout title="Contact - Fred Choi" description="Get in touch with Fred Choi.">
+  <section class="container contact-intro">
+    <h1 class="display">Get In Touch</h1>
+    <p class="body-lg text-secondary contact-subtitle">
+      Pick a direct channel below to reach me, or grab a time on my calendar if you'd rather chat live.
+    </p>
+  </section>
+
+  <section class="container contact-grid-section">
+    <div class="contact-grid">
+      <div class="channels">
+        <ul class="channel-list">
+          {channels.map((c) => (
+            <li>
+              <a
+                href={c.href}
+                target={c.external ? '_blank' : undefined}
+                rel={c.external ? 'noopener noreferrer' : undefined}
+                class="channel"
+              >
+                <span class="channel-icon" aria-hidden="true">
+                  {c.filled ? (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                      <path d={c.iconPath}/>
+                    </svg>
+                  ) : (
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d={c.iconPath}/>
+                    </svg>
+                  )}
+                </span>
+                <span class="channel-meta">
+                  <span class="channel-label">{c.label}</span>
+                  <span class="channel-value">{c.value}</span>
+                </span>
+                <span class="channel-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <aside class="availability">
+        <a href="https://cal.com/fredkchoi" target="_blank" rel="noopener" class="booking-card">
+          <div class="booking-label">Book a meeting</div>
+          <div class="booking-headline">Find a time that works for you</div>
+          <p class="booking-body">
+            Pick a 15- or 30-minute slot on my calendar.
+          </p>
+          <div class="booking-cta">
+            <span>Open scheduler</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"/>
+              <polyline points="7 7 17 7 17 17"/>
+            </svg>
+          </div>
+        </a>
+
+        <div class="location-card">
+          <div class="location-label">Based in</div>
+          <div class="location-value">New York, NY</div>
+          <div class="location-sub">Eastern Time (UTC−5 / UTC−4)</div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-intro {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--stack-lg);
+  }
+
+  .contact-subtitle {
+    margin-top: var(--stack-md);
+  }
+
+  .contact-grid-section {
+    padding-bottom: var(--section-gap);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-lg);
+  }
+
+  @media (min-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 48px;
+    }
+  }
+
+  .channels {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .channel-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: var(--stack-sm);
+  }
+
+  .channel {
+    display: flex;
+    align-items: center;
+    gap: var(--stack-md);
+    padding: 16px 20px;
+    height: 100%;
+    background-color: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    color: var(--on-surface);
+    text-decoration: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+
+  .channel:hover {
+    border-color: var(--primary);
+    text-decoration: none;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  }
+
+  .channel-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius);
+    background-color: var(--surface-container);
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .channel-meta {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .channel-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--on-surface);
+  }
+
+  .channel-value {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+
+  .channel-arrow {
+    color: var(--on-surface-variant);
+    flex-shrink: 0;
+  }
+
+  .availability {
+    display: flex;
+    flex-direction: column;
+    gap: var(--stack-md);
+  }
+
+  .booking-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary);
+    color: var(--on-primary);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    text-decoration: none;
+    transition: box-shadow 150ms ease, transform 150ms ease;
+  }
+
+
+  .booking-card:hover {
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(26, 115, 232, 0.25);
+    transform: translateY(-1px);
+  }
+
+  .booking-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.85;
+    margin-bottom: var(--stack-sm);
+  }
+
+  .booking-headline {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-bottom: var(--stack-sm);
+  }
+
+  .booking-body {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: var(--stack-md);
+    opacity: 0.92;
+  }
+
+  .booking-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: auto;
+  }
+
+  .location-card {
+    background-color: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+  }
+
+  .location-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--on-surface-variant);
+    margin-bottom: 6px;
+  }
+
+  .location-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--on-surface);
+  }
+
+  .location-sub {
+    font-size: 13px;
+    color: var(--on-surface-variant);
+    margin-top: 4px;
+  }
+</style>

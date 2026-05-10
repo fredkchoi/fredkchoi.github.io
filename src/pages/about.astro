@@ -1,0 +1,412 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const experience = [
+  {
+    title: 'Software Engineer III',
+    company: 'Medallion',
+    period: '2023 - Present',
+    location: 'New York, NY',
+    bullets: [
+      'Built a new request-completion workflow on top of a newly-extended data model for partial approvals at a sub-entity level, unlocking revenue earlier for already-completed work.',
+      'Built AI-powered document quality-assurance tooling that automated inspection of completed forms to surface inconsistencies with source-of-truth data.',
+      'Led large-scale data migration initiatives to reduce technical debt, optimize follow-up flows, and consolidate fragmented reference data.',
+    ],
+  },
+  {
+    title: 'Software Engineer II',
+    company: 'Medallion',
+    period: '2022 - 2023',
+    location: 'New York, NY',
+    bullets: [
+      'Built a new Payer Contracting product to replace a legacy spreadsheet-based workflow, doubling operational capacity.',
+      'Implemented provider-management features using GraphQL and Strawberry for a new product suite used by hospitals.',
+    ],
+  },
+  {
+    title: 'ML Engineer Intern',
+    company: 'JD.com',
+    period: 'Summer 2021',
+    location: 'Remote',
+    bullets: [
+      'Developed bilinear CNN models for image classification tasks using PyTorch.',
+      'Constructed noisy image classification datasets from real-world images to evaluate performance and robustness of existing fine-grained image classification models.',
+    ],
+  },
+  {
+    title: 'Research Assistant',
+    company: 'University of Pennsylvania',
+    period: 'Summer 2019',
+    location: 'Philadelphia, PA',
+    bullets: [
+      'Analyzed cell images using an image segmentation model in MATLAB.',
+      'Assisted in ground truth labelling to distinguish between different types of cells.',
+    ],
+  },
+];
+
+const strong = ['Python', 'TypeScript', 'React', 'Redux', 'AntD', 'Django', 'GraphQL', 'Apollo', 'Strawberry', 'PostgreSQL', 'Jupyter', 'PyTorch', 'Docker', 'Celery', 'AWS'];
+const medium = ['SQL', 'FastAPI', 'SQLAlchemy', 'Pydantic', 'Vite', 'Astro', 'Recharts', 'Vercel', 'Railway', 'GitHub Actions', 'Java', 'C', 'MATLAB', 'Bootstrap', 'MongoDB', 'Express', 'Verilog', 'Selenium'];
+const familiar = ['OCaml', 'Spark'];
+const aiTools = ['Claude', 'OpenAI / Codex', 'Cursor', 'Devin', 'Anthropic SDK'];
+---
+
+<BaseLayout title="About - Fred Choi" description="About Fred Choi: software engineer, experience, education, and technical stack.">
+  <section class="container intro-section">
+    <h1 class="display">About Me</h1>
+    <p class="body-lg text-secondary intro-bio">
+      Full stack engineer with 4+ years of experience building healthcare technology. I focus on
+      automating complex operational workflows, turning manual back-office processes into reliable,
+      scaleable software solutions.
+    </p>
+  </section>
+
+  <section class="container stack-section">
+    <h2 class="headline-lg section-title">Technical Stack</h2>
+    <div class="stack-grid">
+      <div class="stack-tier">
+        <div class="stack-tier-label">Strong</div>
+        <div class="chip-group">
+          {strong.map((s) => <span class="chip">{s}</span>)}
+        </div>
+      </div>
+      <div class="stack-tier">
+        <div class="stack-tier-label">Medium</div>
+        <div class="chip-group">
+          {medium.map((s) => <span class="chip chip-muted">{s}</span>)}
+        </div>
+      </div>
+      <div class="stack-tier">
+        <div class="stack-tier-label">Familiar</div>
+        <div class="chip-group">
+          {familiar.map((s) => <span class="chip chip-muted">{s}</span>)}
+        </div>
+      </div>
+      <div class="stack-tier">
+        <div class="stack-tier-label">AI / LLM Tools</div>
+        <div class="chip-group">
+          {aiTools.map((s) => <span class="chip">{s}</span>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container experience-section">
+    <h2 class="headline-lg section-title">Professional Experience</h2>
+    <ol class="timeline">
+      {experience.map((job) => (
+        <li class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content">
+            <div class="job-header">
+              <div>
+                <h3 class="job-title">{job.title}</h3>
+                <div class="job-company">{job.company} · <span class="job-location">{job.location}</span></div>
+              </div>
+              <div class="job-period">{job.period}</div>
+            </div>
+            <ul class="job-bullets">
+              {job.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="container education-section">
+    <h2 class="headline-lg section-title">Education</h2>
+    <div class="card education-card">
+      <div class="education-header">
+        <div>
+          <div class="education-degree">B.S.E. in Computer &amp; Information Science</div>
+          <div class="education-degree">B.S.E. in Materials Science &amp; Engineering</div>
+          <div class="education-meta">University of Pennsylvania · Minor in Mathematics</div>
+        </div>
+        <div class="education-period">2018 - 2022</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container languages-section">
+    <h2 class="headline-lg section-title">Languages</h2>
+    <div class="lang-grid">
+      <div>
+        <div class="lang-label">Native</div>
+        <div class="lang-value">English · Cantonese · Mandarin</div>
+      </div>
+      <div>
+        <div class="lang-label">Proficient</div>
+        <div class="lang-value">German (Sprachdiplom I)</div>
+      </div>
+      <div>
+        <div class="lang-label">Elementary</div>
+        <div class="lang-value">Italian</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container beyond-section">
+    <h2 class="headline-lg section-title">Beyond Code</h2>
+    <ul class="beyond-list">
+      <li>
+        <span class="beyond-label">Outdoors</span>
+        <span class="beyond-value">Running, skiing, and golf. Currently training for my second NYC marathon.</span>
+      </li>
+      <li>
+        <span class="beyond-label">Volunteering</span>
+        <span class="beyond-value">Helping with social services and meal distribution at the Meatloaf Kitchen in NYC.</span>
+      </li>
+      <li>
+        <span class="beyond-label">Cooking</span>
+        <span class="beyond-value">Trying out new recipes and perfecting my own, mostly to avoid paying NYC restaurant prices.</span>
+      </li>
+      <li>
+        <span class="beyond-label">Mahjong</span>
+        <span class="beyond-value">Learned from a master sensei with 75+ years of experience (my grandma). Regular games with friends and family, and teaching anyone willing to learn.</span>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro-section {
+    padding-top: var(--section-gap);
+  }
+
+  .intro-bio {
+    margin-top: var(--stack-md);
+  }
+
+  .stack-section {
+    padding-top: var(--section-gap);
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-lg);
+    background-color: var(--surface-container-lowest);
+    border: 1px solid var(--outline-variant);
+    border-radius: var(--radius-lg);
+    padding: var(--stack-lg);
+  }
+
+  @media (min-width: 700px) {
+    .stack-grid {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 48px;
+      row-gap: var(--stack-lg);
+    }
+  }
+
+  .stack-tier-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--stack-sm);
+  }
+
+  .chip-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .chip-muted {
+    background-color: var(--surface-container);
+    color: var(--on-surface-variant);
+  }
+
+  .experience-section,
+  .education-section,
+  .languages-section,
+  .beyond-section {
+    padding-top: var(--section-gap);
+  }
+
+  .beyond-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-md);
+    align-items: start;
+  }
+
+  @media (min-width: 700px) {
+    .beyond-list {
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 48px;
+    }
+  }
+
+  .beyond-list li {
+    display: grid;
+    gap: 4px;
+    padding: 12px 0;
+    border-top: 1px solid var(--outline-variant);
+  }
+
+  .beyond-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--on-surface-variant);
+  }
+
+  .beyond-value {
+    font-size: 14px;
+    line-height: 22px;
+    color: var(--on-surface);
+  }
+
+  .section-title {
+    margin-bottom: var(--stack-lg);
+  }
+
+  .timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    left: 6px;
+    width: 1px;
+    background-color: var(--outline-variant);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 32px;
+    padding-bottom: var(--stack-lg);
+  }
+
+  .timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .timeline-marker {
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: var(--surface);
+    border: 2px solid var(--primary);
+  }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .job-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--on-surface);
+    margin-bottom: 2px;
+  }
+
+  .job-company {
+    font-size: 14px;
+    color: var(--primary);
+    font-weight: 500;
+  }
+
+  .job-location {
+    color: var(--on-surface-variant);
+    font-weight: 400;
+  }
+
+  .job-period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.04em;
+  }
+
+  .job-bullets {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .job-bullets li {
+    margin-bottom: 6px;
+  }
+
+  .education-card {
+    padding: var(--stack-lg);
+  }
+
+  .education-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--stack-md);
+  }
+
+  .education-degree {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--on-surface);
+    line-height: 24px;
+  }
+
+  .education-meta {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--on-surface-variant);
+  }
+
+  .education-period {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--on-surface-variant);
+    letter-spacing: 0.04em;
+  }
+
+  .lang-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 600px) {
+    .lang-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .lang-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--on-surface-variant);
+    margin-bottom: 4px;
+  }
+
+  .lang-value {
+    font-size: 14px;
+    color: var(--on-surface);
+    font-weight: 500;
+  }
+</style>

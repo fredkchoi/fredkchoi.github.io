@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+type Project = {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  bullets?: string[];
+  tags: string[];
+  links?: { label: string; href: string; external?: boolean }[];
+  featured?: boolean;
+};
+
+const projects: Project[] = [
+  {
+    id: 'strava-training-planner',
+    title: 'Strava Training Planner',
+    category: 'Side Project',
+    description:
+      'A customizable training planner for runners that integrates with Strava to build personalized weekly run + cross-training schedules. Designed around the way I actually train. Planning to extend it to match completed Strava activities against scheduled plan workouts to evaluate ongoing plan progress.',
+    bullets: [
+      'Custom plan generator with support for goal races, taper weeks, and cross-training days',
+      'Strava OAuth integration to pull recent activities and adjust plans dynamically',
+      'FastAPI backend on Railway + React/Vite frontend on Vercel with a demo mode for evaluation without a Strava account',
+    ],
+    tags: ['TypeScript', 'React', 'Vite', 'Recharts', 'FastAPI', 'PostgreSQL', 'Anthropic SDK', 'Vercel', 'Railway'],
+    links: [
+      { label: 'Live demo', href: 'https://strava-training-planner.vercel.app/?demo', external: true },
+      { label: 'GitHub', href: 'https://github.com/fredkchoi/strava-training-planner', external: true },
+    ],
+    featured: true,
+  },
+  {
+    id: 'hkjc-racing-analysis',
+    title: 'HKJC Racing Data Analysis',
+    category: 'UPenn · CIS 545 Final Project',
+    description:
+      'Final project for UPenn\'s CIS 545 (Big Data Analytics). Scraped historical Hong Kong Jockey Club race and horse data with Selenium, then built a combined dataset and analyzed it in pandas / Jupyter. Planning to iterate on it this year into a live website that surfaces tips for upcoming races.',
+    tags: ['Python', 'Pandas', 'Selenium', 'Jupyter'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/fredkchoi/CIS-545-Final-Project', external: true },
+    ],
+    featured: true,
+  },
+  {
+    id: 'payer-name-standardization',
+    title: 'Payer Name Standardization',
+    category: 'Medallion · Work',
+    description:
+      'Led a zero-incident migration consolidating fragmented, custom payer names onto a standardized canonical set. Built a name-mapping workflow that suggests the standardized name to clients when they enter a custom name or alias.',
+    tags: ['Python', 'Django', 'React', 'PostgreSQL'],
+  },
+  {
+    id: 'bulk-request-flow',
+    title: 'Bulk Request Flow',
+    category: 'Medallion · Work',
+    description:
+      'Built a bulk-creation workflow for demographic update requests, raising the per-submission cap from 1 to 100. Now drives 80%+ of newly created requests.',
+    tags: ['Python', 'Django', 'React', 'PostgreSQL'],
+  },
+  {
+    id: 'granular-completion-workflow',
+    title: 'Granular Completion Workflow',
+    category: 'Medallion · Work',
+    description:
+      'Built a new request-completion workflow on top of a newly-extended data model for partial approvals at a sub-entity level - unlocking revenue earlier for work already completed instead of waiting for the entire workflow to close.',
+    tags: ['Python', 'Django', 'PostgreSQL', 'GraphQL'],
+  },
+  {
+    id: 'ai-document-qa',
+    title: 'AI-Powered Document QA Tooling',
+    category: 'Medallion · Work',
+    description:
+      'Internal tooling that inspects completed forms and flags inconsistencies between the form and the source-of-truth data - catching costly errors earlier in the workflow.',
+    tags: ['Python', 'OCR', 'LLM tooling', 'Celery'],
+  },
+  {
+    id: 'payer-contracting',
+    title: 'Payer Contracting Platform',
+    category: 'Medallion · Work',
+    description:
+      'Built a new Payer Contracting product to replace a legacy spreadsheet-based workflow, roughly doubling operational capacity.',
+    tags: ['Python', 'Django', 'React'],
+  },
+];
+---
+
+<BaseLayout title="Projects - Fred Choi" description="Selected engineering projects by Fred Choi.">
+  <section class="container projects-intro">
+    <h1 class="display">Selected Projects</h1>
+    <p class="body-lg text-secondary projects-subtitle">
+      A mix of side projects and healthcare-tech work at Medallion.
+    </p>
+  </section>
+
+  <section class="container projects-grid-section">
+    <div class="projects-grid">
+      {projects.map((project) => (
+        <article id={project.id} class:list={['card', 'card-hover', 'project-card', { featured: project.featured }]}>
+          <div class="project-meta">{project.category}</div>
+          <h2 class="project-title">{project.title}</h2>
+          <p class="project-description">{project.description}</p>
+          {project.bullets && (
+            <ul class="project-bullets">
+              {project.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          )}
+          <div class="project-tags">
+            {project.tags.map((t) => <span class="chip">{t}</span>)}
+          </div>
+          {project.links && (
+            <div class="project-links">
+              {project.links.map((link) => (
+                <a href={link.href} target={link.external ? '_blank' : undefined} rel={link.external ? 'noopener noreferrer' : undefined}>
+                  {link.label}
+                  {link.external && (
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15 3 21 3 21 9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  function flashFromHash() {
+    const hash = window.location.hash.slice(1);
+    if (!hash) return;
+    const target = document.getElementById(hash);
+    if (!target) return;
+
+    // Restart the animation in case the user navigates to the same hash again.
+    target.classList.remove('flash');
+    void (target as HTMLElement).offsetWidth;
+    target.classList.add('flash');
+  }
+
+  // Run on initial load (browser handles the scroll, we add the highlight).
+  flashFromHash();
+
+  // Also handle in-page hash changes.
+  window.addEventListener('hashchange', flashFromHash);
+</script>
+
+<style>
+  .projects-intro {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--stack-lg);
+  }
+
+  .projects-subtitle {
+    margin-top: var(--stack-md);
+  }
+
+  .projects-grid-section {
+    padding-bottom: var(--section-gap);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--stack-md);
+  }
+
+  @media (min-width: 768px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+    scroll-margin-top: 80px;
+  }
+
+  @keyframes card-flash {
+    0%, 20% {
+      box-shadow: 0 0 0 4px var(--primary);
+      border-color: var(--primary);
+    }
+    100% {
+      box-shadow: 0 0 0 4px transparent;
+    }
+  }
+
+  .project-card.flash {
+    animation: card-flash 2s ease-out;
+  }
+
+  .project-card.featured {
+    grid-column: 1 / -1;
+    border-color: var(--primary);
+  }
+
+  .project-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--on-surface-variant);
+    margin-bottom: 8px;
+  }
+
+  .project-card.featured .project-meta {
+    color: var(--primary);
+  }
+
+  .project-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    margin-bottom: var(--stack-md);
+    color: var(--on-surface);
+  }
+
+  .project-description {
+    font-size: 15px;
+    line-height: 24px;
+    color: var(--on-surface-variant);
+    margin-bottom: var(--stack-md);
+  }
+
+  .project-bullets {
+    margin: 0 0 var(--stack-md);
+    padding-left: 18px;
+    color: var(--on-surface-variant);
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .project-bullets li {
+    margin-bottom: 4px;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: var(--stack-md);
+  }
+
+  .project-card:last-child .project-tags,
+  .project-card:not(.featured) .project-tags:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: auto;
+    padding-top: var(--stack-sm);
+  }
+
+  .project-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
+  }
+</style>

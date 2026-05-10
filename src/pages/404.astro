@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 - Page Not Found" description="The page you're looking for doesn't exist on fredkchoi.github.io.">
+  <section class="container not-found">
+    <div class="code">404</div>
+    <h1 class="display">Page not found</h1>
+    <p class="body-lg text-secondary subtitle">
+      Looks like that URL doesn't exist on this site. It might have moved, or maybe it never lived here at all.
+    </p>
+    <div class="actions">
+      <a href="/" class="btn btn-primary">← Back home</a>
+      <a href="/projects" class="btn btn-secondary">Browse projects</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-top: var(--section-gap);
+    padding-bottom: var(--section-gap);
+    max-width: 720px;
+  }
+
+  .code {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--primary);
+    letter-spacing: 0.1em;
+    margin-bottom: var(--stack-md);
+  }
+
+  .display {
+    margin-bottom: var(--stack-md);
+  }
+
+  .subtitle {
+    margin-bottom: var(--stack-lg);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--stack-md);
+  }
+
+  @media (max-width: 600px) {
+    .actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .actions .btn {
+      width: 100%;
+    }
+  }
+</style>
