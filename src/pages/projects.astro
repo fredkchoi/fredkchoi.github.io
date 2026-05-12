@@ -36,8 +36,8 @@ const projects: Project[] = [
     title: 'Five Iron Scraper',
     category: 'Side Project',
     description:
-      'Auto-books Five Iron Golf\'s $29/hour after-9pm simulator slots the moment they open at midnight ET, 14 days in advance. Includes an availability notifier, a weekly prompt that emails me to confirm target dates, and automatic auth token refresh so bookings don\'t fail at midnight.',
-    tags: ['Python', 'GitHub Actions', 'SMTP'],
+      'Auto-books Five Iron Golf\'s $29/hour after-9pm simulator slots the moment they open at midnight ET, 14 days in advance. Triggered by a Cloudflare Worker cron for the second-sensitive timing the booking window demands. Successful bookings sync to Google Calendar; failed ones fall through to a cancellation poller that watches for openings. Also includes a weekly email prompt to confirm target dates and automatic auth token refresh so bookings don\'t fail at midnight.',
+    tags: ['Python', 'TypeScript', 'Cloudflare Workers', 'GitHub Actions', 'Google Calendar API'],
     links: [
       { label: 'GitHub', href: 'https://github.com/fredkchoi/five-iron-scraper', external: true },
     ],
