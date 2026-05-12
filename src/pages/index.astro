@@ -13,12 +13,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <span>NYC</span>
       </div>
       <h1 class="display hero-headline">
-        Full stack software engineer building <span class="accent">healthcare technology.</span>
+        <span class="headline-sizer" aria-hidden="true">Full stack software engineer building <span class="accent">healthcare technology.</span></span>
+        <span class="headline-typed"><span id="typed-text"></span><span class="cursor">|</span></span>
       </h1>
       <p class="body-lg text-secondary hero-bio">
-        I'm Fred Choi, a full stack Software Engineer at
+        I'm Fred Choi, a Software Engineer at
         <a href="https://medallion.co/" target="_blank" rel="noopener" class="bio-link">Medallion</a>.
-        Specialized in Python/Django and React, passionate about automating complex workflows to solve
+        I specialize in Python/Django and React, and I'm passionate about automating complex workflows to solve
         real world problems and scale business operations.
       </p>
       <div class="hero-actions">
@@ -54,6 +55,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </ul>
   </section>
 
+<script>
+  const prefix = 'Full stack software engineer building ';
+  const suffix = 'healthcare technology.';
+  const full = prefix + suffix;
+  const el = document.getElementById('typed-text');
+  const cursor = document.querySelector('.cursor');
+
+  let i = 0;
+  function type() {
+    if (!el) return;
+    i++;
+    const plain = full.slice(0, Math.min(i, prefix.length));
+    const accented = i > prefix.length ? full.slice(prefix.length, i) : '';
+    el.innerHTML = plain + (accented ? `<span class="accent">${accented}</span>` : '');
+    if (i < full.length) {
+      setTimeout(type, 40);
+    } else if (cursor) {
+      setTimeout(() => cursor.remove(), 1500);
+    }
+  }
+
+  type();
+</script>
 </BaseLayout>
 
 <style>
@@ -90,10 +114,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .hero-headline {
     margin-bottom: var(--stack-md);
+    position: relative;
   }
 
-  .hero-headline .accent {
+  .headline-sizer {
+    visibility: hidden;
+    display: block;
+  }
+
+  .headline-typed {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .hero-headline :global(.accent) {
     color: var(--primary);
+  }
+
+  .cursor {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 300;
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
   }
 
   .hero-bio {
