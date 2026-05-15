@@ -14,11 +14,11 @@ type Project = {
 
 const projects: Project[] = [
   {
-    id: 'strava-training-planner',
-    title: 'Strava Training Planner',
+    id: 'sherpa',
+    title: 'Sherpa',
     category: 'Side Project',
     description:
-      'A customizable training planner for runners that integrates with Strava to build personalized weekly run + cross-training schedules. Designed around the way I actually train. Planning to extend it to match completed Strava activities against scheduled plan workouts to evaluate ongoing plan progress.',
+      'An AI-powered training companion for runners that integrates with Strava to build personalized weekly run and cross-training schedules around your goal races. Uses a multi-agent architecture where specialist Claude models each own a slice of the plan — running, weight training, and each cross-training activity — then an orchestrator merges them into a single coherent schedule. The repository is private to protect the prompt engineering that powers the plan generation.',
     bullets: [
       'Custom plan generator with support for goal races, taper weeks, and cross-training days',
       'Strava OAuth integration to pull recent activities and adjust plans dynamically',
@@ -26,8 +26,7 @@ const projects: Project[] = [
     ],
     tags: ['TypeScript', 'React', 'Vite', 'Recharts', 'FastAPI', 'PostgreSQL', 'Anthropic SDK', 'Vercel', 'Railway'],
     links: [
-      { label: 'Live demo', href: 'https://strava-training-planner.vercel.app/?demo', external: true },
-      { label: 'GitHub', href: 'https://github.com/fredkchoi/strava-training-planner', external: true },
+      { label: 'Live demo', href: 'https://runsherpa.vercel.app/?demo', external: true },
     ],
     featured: true,
   },
