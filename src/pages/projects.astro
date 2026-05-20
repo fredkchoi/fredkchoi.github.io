@@ -55,6 +55,18 @@ const projects: Project[] = [
     featured: true,
   },
   {
+    id: 'mta-departure-board',
+    title: 'MTA Departure Board',
+    category: 'Side Project',
+    description:
+      'I built this to check upcoming train times before leaving my apartment so I spend as little time waiting on the platform as possible. Runs on a Raspberry Pi and displays real-time departures for any NYC subway stations you care about, pulling from the MTA\'s free GTFS-Realtime feeds with no API key needed. Supports multiple stations so you can compare which train is coming first.',
+    tags: ['TypeScript', 'Node.js', 'Express', 'Vite'],
+    links: [
+      { label: 'GitHub', href: 'https://github.com/fredkchoi/mta-departure-board', external: true },
+    ],
+    featured: true,
+  },
+  {
     id: 'payer-name-standardization',
     title: 'Payer Name Standardization',
     category: 'Medallion · Work',
@@ -93,17 +105,6 @@ const projects: Project[] = [
     description:
       'Built a new Payer Contracting product to replace a legacy spreadsheet-based workflow, roughly doubling operational capacity.',
     tags: ['Python', 'Django', 'React'],
-  },
-  {
-    id: 'mta-departure-board',
-    title: 'MTA Departure Board',
-    category: 'Side Project',
-    description:
-      'I built this to check upcoming train times before leaving my apartment so I spend as little time waiting on the platform as possible. Runs on a Raspberry Pi and displays real-time departures for any NYC subway stations you care about, pulling from the MTA\'s free GTFS-Realtime feeds with no API key needed. Supports multiple stations so you can compare which train is coming first.',
-    tags: ['TypeScript', 'Node.js', 'Express', 'Vite'],
-    links: [
-      { label: 'GitHub', href: 'https://github.com/fredkchoi/mta-departure-board', external: true },
-    ],
   },
 ];
 ---
